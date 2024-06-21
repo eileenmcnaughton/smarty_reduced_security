@@ -30,3 +30,13 @@ WHERE
   body_text LIKE '%{crmAPI %'
    OR body_html LIKE '%{crmAPI %'
    OR subject LIKE '%{crmAPI ';
+
+UPDATE civicrm_mailing_component
+SET
+  body_text = REPLACE(body_text, '{crmAPI ', '{crmAPIWithPermissionBypass '),
+  body_html = REPLACE(body_html, '{crmAPI ', '{crmAPIWithPermissionBypass '),
+  subject = REPLACE(subject, '{crmAPI', '{crmAPIWithPermissionBypass ')
+WHERE
+  body_text LIKE '%{crmAPI %'
+   OR body_html LIKE '%{crmAPI %'
+   OR subject LIKE '%{crmAPI ';
