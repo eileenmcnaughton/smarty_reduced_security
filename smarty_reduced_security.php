@@ -12,13 +12,14 @@ use CRM_SmartyReducedSecurity_ExtensionUtil as E;
 function smarty_reduced_security_civicrm_config(&$config): void {
   _smarty_reduced_security_civix_civicrm_config($config);
   $smarty = CRM_Core_Smarty::singleton();
-  if (method_exists($smarty, 'getVersion')) {
+  if (method_exists($smarty, 'getVersion') && empty(\Civi::$statics['smarty_reduced_security_civicrm_config'])) {
     require_once 'CRM/Core/Smarty/plugins/function.crmAPIWithPermissionBypass.php';
     if ($smarty->getVersion() === 2) {
       $smarty->addPluginsDir(__DIR__ . '/CRM/Core/Smarty/plugins/');
 
     }
     $smarty->registerPlugin('function', 'crmAPIWithPermissionBypass', 'smarty_function_crmAPIWithPermissionBypass');
+    \Civi::$statics['smarty_reduced_security_civicrm_config'] = TRUE;
   }
   else {
     // do nothing - not relevant. It is insecure.
