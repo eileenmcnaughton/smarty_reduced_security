@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<extension key="smarty_reduced_security" type="module">
+  <file>smarty_reduced_security</file>
+  <name>smarty_reduced_security</name>
+  <description>This function allows smarty api access from user message templates with access to the most egregious insecurities blocked</description>
+  <license>AGPL-3.0</license>
+  <authors>
+    <author>
+      <name>FIXME</name>
+      <email>FIXME</email>
+      <role>Maintainer</role>
+    </author>
+  </authors>
+  <urls>
+    <url desc="Main Extension Page">https://FIXME</url>
+    <url desc="Documentation">https://FIXME</url>
+    <url desc="Support">https://FIXME</url>
+    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2024-06-21</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>5.76</ver>
+  </compatibility>
+  <comments>If you are using Smarty api calls in your message templates these will not work in core by default. You can install this to replace them with a call to a less insecure function which does work but restricts what can be done. It is intended to be transitional</comments>
+  <classloader>
+    <psr0 prefix="CRM_" path="."/>
+    <psr4 prefix="Civi\" path="Civi"/>
+  </classloader>
+  <civix>
+    <namespace>CRM/SmartyReducedSecurity</namespace>
+    <format>23.02.1</format>
+    <angularModule>crmSmartyReducedSecurity</angularModule>
+  </civix>
+  <mixins>
+    <mixin>mgd-php@1.0.0</mixin>
+    <mixin>setting-php@1.0.0</mixin>
+    <mixin>smarty@1.0.3</mixin>
+  </mixins>
+  <upgrader>CRM_SmartyReducedSecurity_Upgrader</upgrader>
+</extension>
