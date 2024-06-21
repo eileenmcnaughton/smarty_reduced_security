@@ -2,6 +2,11 @@
 in CiviCRM 5.69.6 and 5.74.4+ the `crmAPI` smarty function
 is not permitted to be used in user content which includes
 
+This should not be installed on versions less than 5.69.6 or between 5.69.6
+and 5.74.4 because the database updates are in the
+install script and the actual usage relies on smarty
+having a getVersion() function, which it won't outside those versions.
+
 - Workflow message templates
 - Any similar tables added by extensions
 - Scheduled reminders ?
