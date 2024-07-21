@@ -28,7 +28,7 @@ function smarty_function_crmAPIWithPermissionBypass($params, &$smarty) {
     CRM_Core_Smarty_UserContentPolicy::assertTagAllowed('crmAPI');
   }
   catch (Exception $e) {
-    $isGet = substr($action, strtolower($action), 0, 3) !== 'get';
+    $isGet = substr(strtolower($action), 0, 3) !== 'get';
     $blockedEntities = ['paymentprocessor'];
     // if people want to add more restrictions or less then patch-welcme on this.
     $mungedEntity = strtolower(str_replace('_','', (string) $entity));
